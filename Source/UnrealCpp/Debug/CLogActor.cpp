@@ -1,0 +1,46 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+
+#include "CLogActor.h"
+#include "Global.h"
+
+// Sets default values
+ACLogActor::ACLogActor()
+{
+ 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+
+}
+
+// Called when the game starts or when spawned
+void ACLogActor::BeginPlay()
+{
+	Super::BeginPlay();
+	CLog::Print(10);
+	CLog::Print(20, 1);
+	CLog::Print(30, 2, 20.f);
+	CLog::Print(40, 3, 20.f);
+
+	CLog::Print("Unreal Cpp Project");
+	CLog::Print(GetActorLocation());
+	CLog::Print(GetActorRotation());
+
+	CLog::Log(33);
+	CLog::Log(PI);
+	CLog::Log("Unreal Cpp Project");
+	CLog::Log(GetActorLocation());
+	CLog::Log(GetActorRotation());
+
+	CLog::Log(this);
+	//CLog::Log(__FUNCTION__, __LINE__);
+	PrintLine();
+}
+
+// Called every frame
+void ACLogActor::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	Time += DeltaTime;
+	CLog::Print(Time, 1);
+}
+
